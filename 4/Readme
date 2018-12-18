@@ -1,0 +1,17 @@
+Installation required for building shared library:
+	https://stackoverflow.com/a/21530768
+Compile C code using:
+	gcc -shared -fPIC -I/usr/include/python2.7/ -lpython2.7 -o myModule.so myModule.c
+	OR
+	gcc -shared -fPIC -I/usr/include/python3.5/ -lpython3.5 -o myModule.so myModule.c
+	OR
+	sudo python3 setup.py install
+
+Give flask server location of server code:
+	export FLASK_APP=server.py
+
+Start server:
+	flask run
+
+Connect to server from client:
+	python client.py

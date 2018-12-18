@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>
+			SQL Injection	
+		</title>
+	</head>
+	<body>
+		<h1>
+			Enter name of single player to display his statistics
+		</h1>		
+		<form action = "/home.html" method="POST">
+			<br>
+			<input type"text" name="query" style="width: 200px; font-size: 20">
+			<br>
+			<input class="button" name="attack" type="submit" value="Search" style="width: 200px">
+			<br>
+		</form>
+		{% if content is not defined %}
+			First try entering Virat Kohli or David Warner
+		{% elif content|length == 1 %}
+			Now try ";select * from player;#" (without quotes)
+		{% elif content|length == 0 %}
+			No stats available.... Try some other name
+		{% endif %}
+		</br></br></br>
+		<table style="width:75%" align="center" border=1 class="table1">
+			<tr>
+				<th> Name </th>
+				<th> Runs </th>
+				<th> Highest Score </th>
+				<th> Fours </th>
+				<th> Sixes </th>
+				<th> Strike Rate </th>
+			</tr>
+			{% for row in content %}
+			<tr>
+				<td> {{ row[1] }} </td>
+				<td> {{ row[5] }} </td>
+				<td> {{ row[6] }} </td>
+				<td> {{ row[11] }} </td>
+				<td> {{ row[12] }} </td>
+				<td> {{ row[8] }} </td>
+			</tr>
+			{% endfor %}
+
+		</table>
+	</body>
+</html>
